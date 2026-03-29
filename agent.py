@@ -120,7 +120,7 @@ Always include the "agent" field.
 
 root_agent = Agent(
     name="smart_summarizer_agent",
-    model=LiteLlm(model="gemini/gemini-2.0-flash"),
+    model=LiteLlm(model="openai/gpt-4o-mini"),
     description="Summarizes text, extracts key points, generates headlines, and classifies content by topic.",
     instruction=SYSTEM_INSTRUCTION,
     tools=[summarize_text, classify_text],

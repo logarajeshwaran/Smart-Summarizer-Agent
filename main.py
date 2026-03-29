@@ -8,6 +8,9 @@ import os
 import uuid
 import logging
 from contextlib import asynccontextmanager
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -141,7 +144,7 @@ async def root():
     return {
         "service": "Smart Summarizer Agent",
         "version": "1.0.0",
-        "model": "gemini-2.0-flash",
+        "model": "gpt-4o-mini",
         "framework": "Google ADK",
         "endpoints": {
             "POST /summarize": "Main agent endpoint — summarize, classify, or both",
@@ -158,7 +161,7 @@ async def root():
 
 @app.get("/health")
 async def health():
-    return {"status": "healthy", "agent": "smart_summarizer_agent", "model": "gemini-2.0-flash"}
+    return {"status": "healthy", "agent": "smart_summarizer_agent", "model": "gpt-4o-mini"}
 
 
 @app.post("/summarize", response_model=AgentResponse)
